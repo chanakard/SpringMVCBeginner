@@ -5,24 +5,25 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class LoginController {
 
 	@RequestMapping("/login")
-	public ModelAndView checkUser(HttpServletRequest req,HttpServletResponse res)
+	public ModelAndView checkUser(@RequestParam("inputUsername") String Username,@RequestParam("inputPassword") String Password, HttpServletRequest req,HttpServletResponse res)
 	{
 		ModelAndView mv = new ModelAndView();
-		String Username = req.getParameter("inputUsername");
-		String Password = req.getParameter("inputPassword");
+		//String Username = req.getParameter("inputUsername");
+		//String Password = req.getParameter("inputPassword");
 		
 		if(Username.equalsIgnoreCase("TEST@gmail.com")) {
-			mv.setViewName("success.jsp");
+			mv.setViewName("success");
 		}
 		else
 		{
-			mv.setViewName("index.jsp");
+			mv.setViewName("index");
 		}
 		
 		
